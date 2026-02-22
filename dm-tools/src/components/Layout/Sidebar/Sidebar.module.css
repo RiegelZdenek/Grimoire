@@ -1,0 +1,104 @@
+.sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    background-color: var(--md-sys-color-background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 0;
+    z-index: 0;
+}
+
+.logoContainer {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.logoIcon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--md-sys-color-primary), var(--md-sys-color-tertiary));
+    color: var(--md-sys-color-on-primary);
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    box-shadow: var(--elevation-2);
+}
+
+.navList {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+}
+
+.navItem {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.navButton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: var(--md-sys-color-on-surface-variant);
+    transition: all var(--transition-standard);
+    width: 72px;
+    border-radius: 16px;
+    padding: 12px 0;
+}
+
+.iconWrapper {
+    width: 48px;
+    height: 32px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all var(--transition-standard);
+}
+
+.label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    opacity: 0.8;
+    transition: opacity var(--transition-standard);
+}
+
+.navButton:hover {
+    color: var(--md-sys-color-on-surface);
+}
+
+.navButton:hover .iconWrapper {
+    background-color: rgba(255, 255, 255, 0.08);
+    /* slight highlight on hover */
+}
+
+/* Active State */
+.navButton.active {
+    color: var(--md-sys-color-on-background);
+}
+
+.navButton.active .iconWrapper {
+    background-color: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+}
+
+.navButton.active .label {
+    opacity: 1;
+    font-weight: 600;
+}

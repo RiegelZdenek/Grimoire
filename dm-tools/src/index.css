@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Material 3 Dark Theme - DnD / Fantasy Vibe */
+  --md-sys-color-background: #121212;
+  --md-sys-color-on-background: #E3E3E3;
+
+  --md-sys-color-surface: #1E1E1E;
+  /* Elevated slightly */
+  --md-sys-color-surface-dim: #121212;
+  --md-sys-color-surface-bright: #383838;
+  --md-sys-color-on-surface: #E3E3E3;
+  --md-sys-color-on-surface-variant: #C4C7C5;
+
+  --md-sys-color-surface-container-lowest: #0F0F0F;
+  --md-sys-color-surface-container-low: #1C1C1C;
+  --md-sys-color-surface-container: #212121;
+  --md-sys-color-surface-container-high: #2B2B2B;
+  --md-sys-color-surface-container-highest: #333333;
+
+  /* Primary forest green vibe */
+  --md-sys-color-primary: #82DCA0;
+  --md-sys-color-on-primary: #00391E;
+  --md-sys-color-primary-container: #00522E;
+  --md-sys-color-on-primary-container: #9EF9B9;
+
+  --md-sys-color-secondary: #B3CCBA;
+  --md-sys-color-on-secondary: #1F3526;
+  --md-sys-color-secondary-container: #354B3B;
+  --md-sys-color-on-secondary-container: #CEE8D5;
+
+  --md-sys-color-tertiary: #EFB8C8;
+  /* Maybe use Gold/Amber for tertiary? Let's use Gold */
+  --md-sys-color-tertiary: #FDE293;
+  --md-sys-color-on-tertiary: #4A3A00;
+  --md-sys-color-tertiary-container: #685400;
+  --md-sys-color-on-tertiary-container: #FFEAA4;
+
+  --md-sys-color-error: #F2B8B5;
+  --md-sys-color-on-error: #601410;
+  --md-sys-color-error-container: #8C1D18;
+  --md-sys-color-on-error-container: #F9DEDC;
+
+  --md-sys-color-outline: #938F99;
+  --md-sys-color-outline-variant: #49454F;
+
+  /* Typography */
+  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Layout constraints for tablet first */
+  --sidebar-width: 100px;
+  /* Slimmer for tablet vertical tabs */
+  --sidebar-expanded-width: 280px;
+
+  /* Animations */
+  --transition-fast: 150ms cubic-bezier(0.2, 0, 0, 1);
+  --transition-standard: 300ms cubic-bezier(0.2, 0, 0, 1);
+  --transition-emphasized: 500ms cubic-bezier(0.2, 0, 0, 1);
+
+  /* Shadows / Elevation */
+  --elevation-1: 0 1px 2px 0 rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
+  --elevation-2: 0 1px 2px 0 rgba(0, 0, 0, 0.3), 0 2px 6px 2px rgba(0, 0, 0, 0.15);
+  --elevation-3: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 4px 8px 3px rgba(0, 0, 0, 0.15);
+}
+
+/* Base Styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-background);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  /* App-like feel, no global scroll */
+}
+
+/* Custom Scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--md-sys-color-surface-container);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--md-sys-color-outline-variant);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--md-sys-color-outline);
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+}

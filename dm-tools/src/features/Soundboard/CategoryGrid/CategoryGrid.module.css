@@ -1,0 +1,85 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    width: 100%;
+}
+
+.tile {
+    background-color: var(--md-sys-color-surface-container);
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: 20px;
+    /* MD3 card rounding */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+    cursor: pointer;
+    transition: all var(--transition-standard);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--elevation-1);
+    color: var(--md-sys-color-on-surface);
+    min-height: 180px;
+}
+
+.iconContainer {
+    color: var(--md-sys-color-on-surface-variant);
+    margin-bottom: 20px;
+    transition: all var(--transition-standard);
+}
+
+.label {
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    transition: all var(--transition-standard);
+}
+
+/* Hover effects */
+.tile:hover {
+    background-color: var(--md-sys-color-surface-container-high);
+    box-shadow: var(--elevation-2);
+    transform: translateY(-4px);
+    border-color: var(--md-sys-color-outline);
+}
+
+.tile:hover .iconContainer {
+    color: var(--md-sys-color-primary);
+    transform: scale(1.1);
+}
+
+/* Active State (When Sidebar is open for this category) */
+.tile.active {
+    background-color: var(--md-sys-color-primary-container);
+    border-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary-container);
+    box-shadow: var(--elevation-2);
+}
+
+.tile.active .iconContainer {
+    color: var(--md-sys-color-on-primary-container);
+}
+
+/* Simulated Ripple Effect / Glow */
+.ripple {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle, var(--md-sys-color-primary) 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform 0.5s, opacity 1s;
+    pointer-events: none;
+}
+
+.tile:active .ripple {
+    transform: scale(0, 0);
+    opacity: 0.1;
+    transition: 0s;
+}

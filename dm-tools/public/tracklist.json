@@ -1,0 +1,128 @@
+[
+    {
+        "id": "travel",
+        "title": "Travelling",
+        "icon": "MapPin",
+        "tracks": [
+            {
+                "id": "tr1",
+                "title": "Green Plains",
+                "filename": "travel_Green Plains.mp3"
+            },
+            {
+                "id": "tr2",
+                "title": "Mysterious Forest",
+                "filename": "travel_Mysterious Forest.mp3"
+            },
+            {
+                "id": "tr3",
+                "title": "Peaceful Travel",
+                "filename": "travel_Peaceful Travel.mp3"
+            },
+            {
+                "id": "tr4",
+                "title": "Wilderness Travel",
+                "filename": "travel_Wilderness Travel.mp3"
+            }
+        ]
+    },
+    {
+        "id": "combat",
+        "title": "Combat",
+        "icon": "Swords",
+        "tracks": [
+            {
+                "id": "c1",
+                "title": "Ambush!",
+                "filename": "combat_Ambush!.mp3"
+            },
+            {
+                "id": "c2",
+                "title": "Chase",
+                "filename": "combat_Chase.mp3"
+            },
+            {
+                "id": "c3",
+                "title": "Epic Fight",
+                "filename": "combat_Epic Fight.mp3"
+            },
+            {
+                "id": "c4",
+                "title": "Surprise!",
+                "filename": "combat_Surprise!.mp3"
+            }
+        ]
+    },
+    {
+        "id": "explore",
+        "title": "Exploring",
+        "icon": "Telescope",
+        "tracks": [
+            {
+                "id": "e1",
+                "title": "Abandoned Ruins",
+                "filename": "explore_Abandoned Ruins.mp3"
+            },
+            {
+                "id": "e2",
+                "title": "Dark Castle",
+                "filename": "explore_Dark Castle.mp3"
+            },
+            {
+                "id": "e3",
+                "title": "Monster Lair",
+                "filename": "explore_Monster Lair.mp3"
+            }
+        ]
+    },
+    {
+        "id": "tavern",
+        "title": "Tavern",
+        "icon": "Beer",
+        "tracks": [
+            {
+                "id": "tav1",
+                "title": "Ale and Anecdotes",
+                "filename": "tavern_Ale and Anecdotes.mp3"
+            },
+            {
+                "id": "tav2",
+                "title": "Cozy Tavern",
+                "filename": "tavern_Cozy Tavern.mp3"
+            }
+        ]
+    },
+    {
+        "id": "town",
+        "title": "Town",
+        "icon": "Building",
+        "tracks": [
+            {
+                "id": "tw1",
+                "title": "Festival Town",
+                "filename": "town_Festival Town.mp3"
+            },
+            {
+                "id": "tw2",
+                "title": "Large City",
+                "filename": "town_Large City.mp3"
+            },
+            {
+                "id": "tw3",
+                "title": "Peaceful Town",
+                "filename": "town_Peaceful Town.mp3"
+            },
+            {
+                "id": "tw4",
+                "title": "Peaceful Village",
+                "filename": "town_Peaceful Village.mp3"
+            }
+        ]
+    },
+    {
+        "id": "mystery",
+        "title": "Mysterious",
+        "icon": "Ghost",
+        "tracks": []
+    }
+]
