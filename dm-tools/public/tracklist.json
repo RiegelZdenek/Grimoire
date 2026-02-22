@@ -95,7 +95,7 @@
     {
         "id": "town",
         "title": "Town",
-        "icon": "Building",
+        "icon": "Castle",
         "tracks": [
             {
                 "id": "tw1",
@@ -123,6 +123,12 @@
         "id": "mystery",
         "title": "Mysterious",
         "icon": "Ghost",
+        "tracks": []
+    },
+    {
+        "id": "generic",
+        "title": "Generic",
+        "icon": "Music",
         "tracks": []
     }
 ]

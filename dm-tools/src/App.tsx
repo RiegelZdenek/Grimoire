@@ -15,7 +15,9 @@ function App() {
       <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
 
       <main className={styles.mainContent}>
-        {activeTab === 'soundboard' && <Soundboard />}
+        <div style={{ display: activeTab === 'soundboard' ? 'block' : 'none', height: '100%' }}>
+          <Soundboard />
+        </div>
         {activeTab === 'players' && <PlayerSheets />}
         {activeTab === 'bestiary' && <Placeholders title="Bestiary" icon="Skull" />}
         {activeTab === 'spells' && <Placeholders title="Spells" icon="BookOpen" />}

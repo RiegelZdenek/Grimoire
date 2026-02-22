@@ -52,19 +52,23 @@ export function useCharacterStore() {
         });
     };
 
-    // Export feature: Triggers a file download
-    const exportData = () => {
-        const dataStr = JSON.stringify(characters, null, 2);
-        const dataBlob = new Blob([dataStr], { type: 'application/json' });
-        const url = URL.createObjectURL(dataBlob);
+    const exportCharacter = (character: Character) => {
+        const jsonString = JSON.stringify(character, null, 2);
+
+        // Convert string to Base64 to bypass some "Blob" filters
+        const base64Data = btoa(unescape(encodeURIComponent(jsonString)));
+        const dataUri = `data:application/json;base64,${base64Data}`;
 
         const link = document.createElement('a');
-        link.href = url;
-        link.download = `dm-tools-characters-${new Date().toISOString().split('T')[0]}.json`;
+        link.href = dataUri;
+
+        const safeName = (character.name || 'unnamed').replace(/[^a-z0-9]/gi, '_');
+        link.download = `dm-tools-${safeName}.json`;
+
+        // Force append and click
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-        URL.revokeObjectURL(url);
     };
 
     // Import feature: Reads a JSON file
@@ -74,11 +78,15 @@ export function useCharacterStore() {
             reader.onload = (e) => {
                 try {
                     const result = e.target?.result as string;
-                    const parsed = JSON.parse(result) as Character[];
+                    const parsed = JSON.parse(result);
 
-                    // Basic validation that it's an array of objects
+                    // Check if it's an array of characters (old format) or a single character
                     if (Array.isArray(parsed) && parsed.length > 0 && parsed[0].id) {
                         setCharacters(parsed);
+                        resolve();
+                    } else if (parsed && !Array.isArray(parsed) && parsed.id) {
+                        // Append the imported single character
+                        setCharacters(prev => [...prev, parsed as Character]);
                         resolve();
                     } else {
                         reject(new Error("Invalid character data format"));
@@ -97,7 +105,7 @@ export function useCharacterStore() {
         addCharacter,
         updateCharacter,
         deleteCharacter,
-        exportData,
+        exportCharacter,
         importData
     };
 }

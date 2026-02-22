@@ -76,10 +76,10 @@ export function CharacterTabs({
             </div>
 
             <div className={styles.actionsBox}>
-                <button className={styles.actionBtn} onClick={onExport} title="Export Characters (JSON)">
+                <button type="button" className={styles.actionBtn} onClick={onExport} title="Export Characters (JSON)">
                     <Download size={18} />
                 </button>
-                <button className={styles.actionBtn} onClick={handleImportClick} title="Import Characters (JSON)">
+                <button type="button" className={styles.actionBtn} onClick={handleImportClick} title="Import Characters (JSON)">
                     <Upload size={18} />
                 </button>
                 <input

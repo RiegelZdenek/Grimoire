@@ -11,7 +11,7 @@ export function PlayerSheets() {
         addCharacter,
         updateCharacter,
         deleteCharacter,
-        exportData,
+        exportCharacter,
         importData
     } = useCharacterStore();
 
@@ -71,7 +71,7 @@ export function PlayerSheets() {
                 onChangeActive={setActiveIndex}
                 onAddCharacter={handleAddCharacter}
                 onDeleteCharacter={handleDelete}
-                onExport={exportData}
+                onExport={() => activeCharacter && exportCharacter(activeCharacter)}
                 onImport={importData}
             />
 

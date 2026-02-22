@@ -24,7 +24,7 @@ export function CategoryGrid({ categories, activeCategoryId, onSelectCategory }:
                         onClick={() => onSelectCategory(category.id)}
                     >
                         <div className={styles.iconContainer}>
-                            {Icon && <Icon size={48} strokeWidth={1.5} />}
+                            {Icon && <Icon size={64} strokeWidth={1.5} />}
                         </div>
                         <span className={styles.label}>{category.title}</span>
                         <div className={styles.ripple} />
