@@ -1,0 +1,159 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 24px;
+    gap: 24px;
+    box-sizing: border-box;
+}
+
+.header {
+    background-color: var(--surface);
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    margin: 0 0 8px 0;
+    font-size: 2rem;
+    color: var(--primary-light);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+}
+
+.subtitle {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+}
+
+.scrollArea {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 12px;
+    /* Prevent scrollbar overlap */
+
+    /* Cross-browser scrollbar support */
+    scrollbar-width: thin;
+    scrollbar-color: var(--text-secondary) rgba(255, 255, 255, 0.05);
+}
+
+.scrollArea::-webkit-scrollbar {
+    width: 10px;
+}
+
+.scrollArea::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+}
+
+.scrollArea::-webkit-scrollbar-thumb {
+    background-color: var(--text-secondary);
+    border-radius: 5px;
+    border: 2px solid var(--surface);
+}
+
+.scrollArea::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-light);
+}
+
+.sections {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    max-width: 900px;
+    margin: 0 auto;
+    /* Center the rules content */
+    padding-bottom: 40px;
+}
+
+/* Vocabulary Glossary Styles */
+.glossary {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 24px;
+    margin: 0;
+}
+
+.termBlock {
+    background-color: var(--surface-overlay);
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+}
+
+.termBlock dt {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1.125rem;
+    margin-bottom: 8px;
+    font-family: 'Outfit', sans-serif;
+}
+
+.termBlock dd {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+}
+
+/* Combat Guide Styles */
+.combatGuide h3 {
+    margin: 24px 0 12px 0;
+    color: var(--primary-light);
+    font-size: 1.25rem;
+    font-family: 'Outfit', sans-serif;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 4px;
+}
+
+.combatGuide h3:first-child {
+    margin-top: 0;
+}
+
+.combatGuide p {
+    margin: 0 0 12px 0;
+    line-height: 1.6;
+}
+
+.combatGuide strong {
+    color: var(--md-sys-color-primary);
+}
+
+.actionList {
+    margin: 0 0 24px 0;
+    padding-left: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.actionList li {
+    line-height: 1.5;
+}
+
+.exampleBox {
+    background-color: var(--surface-overlay);
+    border: 1px solid var(--border-light);
+    border-left: 4px solid var(--primary);
+    border-radius: 4px 8px 8px 4px;
+    padding: 20px;
+    margin-top: 16px;
+}
+
+.exampleScenario {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    border-radius: 6px;
+    margin-top: 16px;
+    font-style: italic;
+    color: var(--text-secondary);
+    border: 1px dashed var(--border);
+}
+
+.exampleScenario strong {
+    color: var(--primary);
+    font-style: normal;
+}

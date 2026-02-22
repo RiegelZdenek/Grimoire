@@ -6,6 +6,7 @@ import { Placeholders } from './features/Placeholders/Placeholders';
 import { PlayerSheets } from './features/PlayerSheets/PlayerSheets';
 import { Spells } from './features/Spells/Spells';
 import { Weapons } from './features/Weapons/Weapons';
+import { Rules } from './features/Rules/Rules';
 import './index.css';
 
 export type Tab = 'soundboard' | 'players' | 'bestiary' | 'spells' | 'items' | 'rules' | 'maps' | 'weapons' | 'npcs' | 'map';
@@ -35,7 +36,7 @@ function App() {
         {activeTab === 'bestiary' && <Placeholders title="Bestiary" icon="Skull" />}
         {activeTab === 'spells' && <Spells />}
         {activeTab === 'items' && <Placeholders title="Items" icon="Package" />}
-        {activeTab === 'rules' && <Placeholders title="Quick Rules" icon="Shield" />}
+        {activeTab === 'rules' && <Rules />}
         {activeTab === 'maps' && <Placeholders title="Maps" icon="Map" />}
         {activeTab === 'weapons' && <Weapons />}
         {activeTab === 'npcs' && <Placeholder title="NPCs & Encounters" />}
