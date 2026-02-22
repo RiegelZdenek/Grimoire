@@ -1,0 +1,107 @@
+.card {
+    padding: 16px;
+    background-color: var(--md-sys-color-surface-container-high);
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: all 0.2s ease;
+    box-shadow: var(--elevation-1);
+}
+
+.card:hover {
+    background-color: var(--md-sys-color-surface-container-highest);
+    border-color: var(--primary-light);
+    transform: translateY(-2px);
+    box-shadow: var(--elevation-2);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.name {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--primary-light);
+    font-family: 'Outfit', sans-serif;
+    line-height: 1.2;
+}
+
+.stats {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.statBadge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 12px;
+    background-color: var(--surface-overlay);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+}
+
+.damageArea {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.damageLabel {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.damageText {
+    font-size: 0.875rem;
+    color: var(--text-primary);
+}
+
+.extractedRolls {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+}
+
+.extractedRoll {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background-color: var(--surface);
+    border: 1px solid currentColor;
+    white-space: nowrap;
+}
+
+.properties {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+}
+
+.propertyBadge {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    /* Keeps layout stable on hover/active if bordered */
+}

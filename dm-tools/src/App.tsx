@@ -5,11 +5,23 @@ import { Soundboard } from './features/Soundboard/Soundboard';
 import { Placeholders } from './features/Placeholders/Placeholders';
 import { PlayerSheets } from './features/PlayerSheets/PlayerSheets';
 import { Spells } from './features/Spells/Spells';
+import { Weapons } from './features/Weapons/Weapons';
+import './index.css';
 
-export type Tab = 'soundboard' | 'players' | 'bestiary' | 'spells' | 'items' | 'rules' | 'maps';
+export type Tab = 'soundboard' | 'players' | 'bestiary' | 'spells' | 'items' | 'rules' | 'maps' | 'weapons' | 'npcs' | 'map';
 
 function App() {
   const [activeTab, setActiveTab] = useState<Tab>('soundboard');
+
+  // Temporarily removing placeholder imports that aren't used right now
+  // import { Swords, User, Map, ScrollText, Music, Settings, Dice5 } from 'lucide-react';
+
+  const Placeholder = ({ title, icon }: { title: string, icon?: string }) => (
+    <div style={{ padding: '20px', textAlign: 'center', fontSize: '24px' }}>
+      <h2>{title}</h2>
+      {icon && <p>Icon: {icon}</p>}
+    </div>
+  );
 
   return (
     <div className={styles.appContainer}>
@@ -25,9 +37,14 @@ function App() {
         {activeTab === 'items' && <Placeholders title="Items" icon="Package" />}
         {activeTab === 'rules' && <Placeholders title="Quick Rules" icon="Shield" />}
         {activeTab === 'maps' && <Placeholders title="Maps" icon="Map" />}
+        {activeTab === 'weapons' && <Weapons />}
+        {activeTab === 'npcs' && <Placeholder title="NPCs & Encounters" />}
+        {activeTab === 'map' && <Placeholder title="Interactive Map" />}
       </main>
     </div>
   );
 }
 
 export default App;
+
+

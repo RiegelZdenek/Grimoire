@@ -1,4 +1,4 @@
-import { type LucideIcon, Music, Users, Skull, BookOpen, Package, Shield, Map } from 'lucide-react';
+import { type LucideIcon, Music, Users, Skull, BookOpen, Package, Shield, Map, Swords } from 'lucide-react';
 import clsx from 'clsx';
 import type { Tab } from '../../../App';
 import styles from './Sidebar.module.css';
@@ -19,6 +19,7 @@ const navItems: NavItem[] = [
     { id: 'players', label: 'Players', icon: Users },
     { id: 'bestiary', label: 'Bestiary', icon: Skull },
     { id: 'spells', label: 'Spells', icon: BookOpen },
+    { id: 'weapons', label: 'Weapons', icon: Swords },
     { id: 'items', label: 'Items', icon: Package },
     { id: 'rules', label: 'Rules', icon: Shield },
     { id: 'maps', label: 'Maps', icon: Map },
