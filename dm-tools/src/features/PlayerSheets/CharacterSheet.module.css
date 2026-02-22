@@ -1,0 +1,516 @@
+.sheetContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    gap: 32px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* --- Typography & Base Inputs --- */
+.sheetContainer input,
+.sheetContainer textarea {
+    background: transparent;
+    border: none;
+    color: var(--md-sys-color-on-surface);
+    font-family: inherit;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
+    padding: 4px;
+    transition: border-color var(--transition-short), background-color var(--transition-short);
+    outline: none;
+}
+
+.sheetContainer input:focus,
+.sheetContainer textarea:focus {
+    border-bottom-color: var(--md-sys-color-primary);
+    background-color: var(--md-sys-color-surface-container-highest);
+}
+
+/* Hide number input arrows/spinners */
+.sheetContainer input[type="number"]::-webkit-outer-spin-button,
+.sheetContainer input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.sheetContainer input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.sheetContainer label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--md-sys-color-on-surface-variant);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.panelBox {
+    background-color: var(--md-sys-color-surface-container);
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.panelBox h3 {
+    font-size: 1.1rem;
+    color: var(--md-sys-color-primary);
+    margin-bottom: 8px;
+    border-bottom: 2px solid var(--md-sys-color-surface-container-highest);
+    padding-bottom: 8px;
+}
+
+/* --- Header Layout --- */
+.header {
+    display: flex;
+    gap: 32px;
+    background-color: var(--md-sys-color-surface-container-low);
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid var(--md-sys-color-outline-variant);
+    align-items: center;
+}
+
+.nameBlock {
+    flex: 1;
+}
+
+.nameInput {
+    font-size: 2.5rem !important;
+    font-weight: 700;
+    width: 100%;
+}
+
+.infoGrid {
+    flex: 2;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    background-color: var(--md-sys-color-surface-container);
+    padding: 16px;
+    border-radius: 8px;
+}
+
+.infoField {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.infoField input {
+    width: 100%;
+}
+
+/* --- Top Row Stats --- */
+.topStatsRow {
+    display: flex;
+    gap: 24px;
+    align-items: stretch;
+}
+
+.abilityScoresRow {
+    flex: 2;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    background-color: var(--md-sys-color-surface-container);
+    padding: 24px 16px;
+    border-radius: 16px;
+    border: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.abilityColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+}
+
+.scoreBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--md-sys-color-surface-container-high);
+    border: 1px solid var(--md-sys-color-primary);
+    border-radius: 12px;
+    width: 70px;
+    height: 70px;
+    position: relative;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.scoreLabel {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--md-sys-color-primary);
+    position: absolute;
+    top: -10px;
+    background-color: var(--md-sys-color-surface-container);
+    padding: 0 4px;
+    border-radius: 4px;
+    border: 1px solid var(--md-sys-color-primary);
+}
+
+.scoreInputWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4px;
+}
+
+.scoreInput {
+    font-size: 1.25rem !important;
+    font-weight: 600;
+    text-align: center;
+    width: 40px;
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+.scoreMod {
+    position: absolute;
+    bottom: -12px;
+    background-color: var(--md-sys-color-surface-container-highest);
+    color: var(--md-sys-color-on-surface);
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    border: 1px solid var(--md-sys-color-outline-variant);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.skillsList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.skillRow {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.skillCheckbox {
+    cursor: pointer;
+    width: 14px;
+    height: 14px;
+    accent-color: var(--md-sys-color-primary);
+}
+
+.skillMod {
+    font-size: 0.85rem;
+    color: var(--md-sys-color-primary);
+    font-weight: 600;
+    min-width: 24px;
+}
+
+.skillName {
+    font-size: 0.75rem;
+    color: var(--md-sys-color-on-surface);
+    white-space: normal;
+    line-height: 1.1;
+}
+
+/* --- Secondary Row Stats --- */
+.secondaryStatsRow {
+    display: flex;
+    gap: 24px;
+    align-items: stretch;
+}
+
+.combatStats {
+    flex: 2;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.combatBox {
+    background-color: var(--md-sys-color-surface-container);
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex: 1;
+}
+
+.combatBox input {
+    font-size: 1.5rem !important;
+    font-weight: 700;
+    text-align: center;
+    border: none !important;
+    width: 100%;
+    margin-top: 8px;
+    min-width: 0;
+}
+
+.panelBoxSecondary {
+    flex: 1;
+    background-color: var(--md-sys-color-surface-container);
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.panelBoxSecondary h3 {
+    font-size: 1.1rem;
+    color: var(--md-sys-color-primary);
+    margin-bottom: 8px;
+    border-bottom: 2px solid var(--md-sys-color-surface-container-highest);
+    padding-bottom: 8px;
+}
+
+.passivesGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.passiveRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.passiveRow span {
+    font-size: 0.9rem;
+    color: var(--md-sys-color-on-surface-variant);
+    font-weight: 600;
+}
+
+.passiveRow input {
+    width: 40px;
+    text-align: right;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+/* --- Main Grid Layout --- */
+.mainGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.gridRow {
+    display: flex;
+    gap: 24px;
+    align-items: stretch;
+}
+
+.gridRow>* {
+    flex: 1;
+}
+
+/* --- Center Column --- */
+.centerColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: 100%;
+}
+
+.notesArea {
+    width: 100%;
+    min-height: 400px;
+    resize: vertical;
+    border: 1px solid var(--md-sys-color-outline-variant) !important;
+    border-radius: 8px;
+    padding: 16px !important;
+    line-height: 1.6;
+}
+
+/* --- Right Column & Shared Item Lists --- */
+.rightColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.panelHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--md-sys-color-surface-container-highest);
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+}
+
+.panelHeader h3 {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.headerActions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.weightTotal {
+    font-size: 0.85rem;
+    color: var(--md-sys-color-on-surface-variant);
+    font-weight: 600;
+}
+
+.iconBtn {
+    background: transparent;
+    border: none;
+    color: var(--md-sys-color-on-surface-variant);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    border-radius: 4px;
+    transition: all var(--transition-short);
+}
+
+.iconBtn:hover {
+    background-color: var(--md-sys-color-surface-container-highest);
+    color: var(--md-sys-color-on-surface);
+}
+
+.itemList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.itemCard {
+    background-color: var(--md-sys-color-surface-container-high);
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: border-color var(--transition-short);
+}
+
+.itemCard:focus-within {
+    border-color: var(--md-sys-color-primary);
+}
+
+.itemHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.itemName {
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    padding: 0 !important;
+    border-bottom: none !important;
+}
+
+.itemDesc,
+.itemNotes {
+    font-size: 0.85rem !important;
+    color: var(--md-sys-color-on-surface-variant) !important;
+    padding: 0 !important;
+    border-bottom: none !important;
+    line-height: 1.4 !important;
+}
+
+.itemDesc {
+    resize: vertical;
+}
+
+.itemDetails {
+    display: flex;
+    gap: 16px;
+}
+
+.itemDetailsRow {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.itemDetailsRow input {
+    font-size: 0.85rem !important;
+    padding: 0 !important;
+}
+
+.tinyInput {
+    width: 40px !important;
+    text-align: center;
+}
+
+.mediumInput {
+    width: 80px !important;
+}
+
+.spellLevelDrop {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.spellLevelDrop label {
+    font-size: 0.75rem;
+    color: var(--md-sys-color-primary);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.detailField {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.detailField input {
+    width: 60px;
+    text-align: right;
+    padding: 0 !important;
+}
+
+.removeBtn {
+    background: transparent;
+    border: none;
+    color: var(--md-sys-color-error);
+    cursor: pointer;
+    opacity: 0.6;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all var(--transition-short);
+}
+
+.removeBtn:hover {
+    opacity: 1;
+    background-color: var(--md-sys-color-error-container);
+}
+
+.emptyText {
+    color: var(--md-sys-color-on-surface-variant);
+    font-style: italic;
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 16px 0;
+}

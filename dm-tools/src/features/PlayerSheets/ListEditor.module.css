@@ -1,0 +1,131 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.title {
+    font-size: 1.1rem;
+    color: var(--md-sys-color-primary);
+    margin-bottom: 8px;
+    border-bottom: 2px solid var(--md-sys-color-surface-container-highest);
+    padding-bottom: 8px;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.listItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--md-sys-color-surface-container-high);
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid var(--md-sys-color-outline-variant);
+    transition: all var(--transition-short);
+}
+
+.listItem:focus-within {
+    border-color: var(--md-sys-color-primary);
+}
+
+.bullet {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--md-sys-color-primary);
+    opacity: 0.7;
+}
+
+.itemInput {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--md-sys-color-on-surface);
+    font-family: inherit;
+    font-size: 0.95rem;
+    outline: none;
+    padding: 4px;
+}
+
+.removeBtn {
+    background: transparent;
+    border: none;
+    color: var(--md-sys-color-error);
+    cursor: pointer;
+    opacity: 0;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity var(--transition-short), background-color var(--transition-short);
+    border-radius: 4px;
+}
+
+.listItem:hover .removeBtn,
+.listItem:focus-within .removeBtn {
+    opacity: 0.7;
+}
+
+.removeBtn:hover {
+    opacity: 1 !important;
+    background-color: var(--md-sys-color-error-container);
+}
+
+.addForm {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.addInput {
+    flex: 1;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
+    color: var(--md-sys-color-on-surface);
+    font-family: inherit;
+    font-size: 0.95rem;
+    padding: 6px 4px;
+    outline: none;
+    transition: border-color var(--transition-short);
+}
+
+.addInput:focus {
+    border-bottom-color: var(--md-sys-color-primary);
+}
+
+.addBtn {
+    background: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+    border: none;
+    border-radius: 6px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-short);
+}
+
+.addBtn:hover:not(:disabled) {
+    background: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    transform: scale(1.05);
+}
+
+.addBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: var(--md-sys-color-surface-container-highest);
+    color: var(--md-sys-color-on-surface-variant);
+}

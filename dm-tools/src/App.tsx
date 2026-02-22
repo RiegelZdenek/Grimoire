@@ -3,6 +3,7 @@ import { Sidebar } from './components/Layout/Sidebar/Sidebar';
 import styles from './App.module.css';
 import { Soundboard } from './features/Soundboard/Soundboard';
 import { Placeholders } from './features/Placeholders/Placeholders';
+import { PlayerSheets } from './features/PlayerSheets/PlayerSheets';
 
 export type Tab = 'soundboard' | 'players' | 'bestiary' | 'spells' | 'items' | 'rules' | 'maps';
 
@@ -12,10 +13,10 @@ function App() {
   return (
     <div className={styles.appContainer}>
       <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
-      
+
       <main className={styles.mainContent}>
         {activeTab === 'soundboard' && <Soundboard />}
-        {activeTab === 'players' && <Placeholders title="Player Sheets" icon="Users" />}
+        {activeTab === 'players' && <PlayerSheets />}
         {activeTab === 'bestiary' && <Placeholders title="Bestiary" icon="Skull" />}
         {activeTab === 'spells' && <Placeholders title="Spells" icon="BookOpen" />}
         {activeTab === 'items' && <Placeholders title="Items" icon="Package" />}
