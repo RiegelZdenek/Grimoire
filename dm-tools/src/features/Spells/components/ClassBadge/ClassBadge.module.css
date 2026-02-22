@@ -1,0 +1,60 @@
+.badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: transparent;
+    /* Unselected background is transparent */
+    border: 2px solid var(--badge-color);
+    /* Colored border matching class */
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.iconWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    color: var(--badge-color);
+    transition: all 0.2s ease;
+}
+
+.badge:hover {
+    background-color: var(--surface);
+    border-color: var(--badge-color);
+    color: var(--text-primary);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.badge.selected {
+    background-color: var(--badge-color);
+    border-color: var(--badge-color);
+    color: #ffffff;
+    box-shadow: 0 0 12px calc(var(--badge-color) + '40');
+    /* Simulate glow, CSS vars in calc for shadow is tricky, we might just drop shadow or use a pre-defined shadow var */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.badge.selected .iconWrapper {
+    color: #000000;
+}
+
+.svgIcon {
+    width: 26px;
+    height: 26px;
+    background-color: currentColor;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+}
