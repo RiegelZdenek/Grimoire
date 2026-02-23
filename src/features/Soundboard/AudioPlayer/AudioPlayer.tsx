@@ -23,7 +23,7 @@ export function AudioPlayer({ activeTrack, isPlaying, onTogglePlay, onNextTrack 
     // Handle track changes
     useEffect(() => {
         if (audioRef.current && activeTrack) {
-            audioRef.current.src = `/audio/${activeTrack.filename}`;
+            audioRef.current.src = `/api/audio/${activeTrack.filename}`;
             audioRef.current.volume = volume;
             if (isPlaying) {
                 audioRef.current.play().catch(e => console.error("Playback failed:", e));

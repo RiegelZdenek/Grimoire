@@ -21,7 +21,7 @@ export function useSoundboard() {
         fetch('/tracklist.json')
             .then(res => res.json())
             .then(data => {
-                setCategories(data);
+                setCategories(data as Category[]);
                 setIsLoading(false);
             })
             .catch(err => {
