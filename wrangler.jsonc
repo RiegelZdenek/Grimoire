@@ -1,0 +1,7 @@
+{
+    "name": "grimoire",
+    "compatibility_date": "2024-02-23",
+    "assets": {
+        "directory": "./dist"
+    }
+}
