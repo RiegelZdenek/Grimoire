@@ -1,22 +1,27 @@
-export const onRequestGet: PagesFunction<{ AUDIO_BUCKET: R2Bucket }> = async (context) => {
-    const filename = context.params.filename as string;
+export interface Env {
+    AUDIO_BUCKET: R2Bucket;
+}
 
-    if (!filename) {
-        return new Response('Missing filename', { status: 400 });
-    }
+export default {
+    async fetch(request: Request, env: Env): Promise<Response> {
+        const url = new URL(request.url);
+        const key = url.pathname.slice(1);
 
-    // Fetch the file securely from the private R2 bucket using the binding
-    const object = await context.env.AUDIO_BUCKET.get(filename);
+        if (request.method === "PUT") {
+            await env.AUDIO_BUCKET.put(key, request.body);
+            return new Response(`Put ${key} successfully!`);
+        }
 
-    if (object === null) {
-        return new Response('Audio file not found', { status: 404 });
-    }
+        const object = await env.AUDIO_BUCKET.get(key);
+        if (object === null) {
+            return new Response("Object not found", { status: 404 });
+        }
 
-    const headers = new Headers();
-    object.writeHttpMetadata(headers);
-    headers.set('etag', object.httpEtag);
-    // Allow the browser to cache it and scrub through the audio
-    headers.set('Accept-Ranges', 'bytes');
+        const headers = new Headers();
+        object.writeHttpMetadata(headers);
+        headers.set('etag', object.httpEtag);
+        headers.set('Accept-Ranges', 'bytes');
 
-    return new Response(object.body, { headers });
+        return new Response(object.body, { headers });
+    },
 };
