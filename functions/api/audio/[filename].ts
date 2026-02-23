@@ -2,26 +2,27 @@ export interface Env {
     AUDIO_BUCKET: R2Bucket;
 }
 
-export default {
-    async fetch(request: Request, env: Env): Promise<Response> {
-        const url = new URL(request.url);
-        const key = url.pathname.slice(1);
+export const onRequestGet: PagesFunction<{ AUDIO_BUCKET: R2Bucket }> = async (context) => {
+    // The filename comes from the [filename].ts dynamic route
+    const filename = context.params.filename as string;
 
-        if (request.method === "PUT") {
-            await env.AUDIO_BUCKET.put(key, request.body);
-            return new Response(`Put ${key} successfully!`);
-        }
+    if (!filename) {
+        return new Response('Missing filename parameter', { status: 400 });
+    }
 
-        const object = await env.AUDIO_BUCKET.get(key);
-        if (object === null) {
-            return new Response("Object not found", { status: 404 });
-        }
+    // Since in URL it comes as e.g. /api/audio/track.mp3
+    // context.params.filename is just "track.mp3"
+    // In our bucket we uploaded files to the root, so key is just filename
+    const object = await context.env.AUDIO_BUCKET.get(filename);
 
-        const headers = new Headers();
-        object.writeHttpMetadata(headers);
-        headers.set('etag', object.httpEtag);
-        headers.set('Accept-Ranges', 'bytes');
+    if (object === null) {
+        return new Response(`Audio file "${filename}" not found in R2 bucket`, { status: 404 });
+    }
 
-        return new Response(object.body, { headers });
-    },
+    const headers = new Headers();
+    object.writeHttpMetadata(headers);
+    headers.set('etag', object.httpEtag);
+    headers.set('Accept-Ranges', 'bytes');
+
+    return new Response(object.body, { headers });
 };
