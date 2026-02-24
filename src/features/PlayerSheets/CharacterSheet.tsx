@@ -1,6 +1,7 @@
 import type { Character, AbilityScores, Passives, InventoryItem, CharacterItem, Weapon, Spell } from './types';
 import { ListEditor } from './ListEditor';
 import { Plus, Trash2 } from 'lucide-react';
+import clsx from 'clsx';
 import styles from './CharacterSheet.module.css';
 
 interface CharacterSheetProps {
@@ -192,16 +193,14 @@ export function CharacterSheet({ character, onUpdate }: CharacterSheetProps) {
                                             // Optional: add proficiency bonus to modifier if proficient
                                             const totalMod = isProf ? mod + character.proficiencyBonus : mod;
                                             return (
-                                                <label key={skill} className={styles.skillRow}>
-                                                    <input
-                                                        type="checkbox"
-                                                        checked={isProf}
-                                                        onChange={() => toggleSkillProficiency(skill)}
-                                                        className={styles.skillCheckbox}
-                                                    />
+                                                <div
+                                                    key={skill}
+                                                    className={clsx(styles.skillRow, { [styles.skillProficient]: isProf })}
+                                                    onClick={() => toggleSkillProficiency(skill)}
+                                                >
                                                     <span className={styles.skillMod}>{formatMod(totalMod)}</span>
                                                     <span className={styles.skillName}>{skill}</span>
-                                                </label>
+                                                </div>
                                             );
                                         })}
                                     </div>

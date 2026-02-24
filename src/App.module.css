@@ -5,6 +5,47 @@
     background-color: var(--md-sys-color-background);
 }
 
+.mainContentWrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    /* Prevent flex items from overflowing */
+}
+
+.mobileTopBar {
+    display: none;
+    align-items: center;
+    padding: 12px 24px;
+    background-color: var(--md-sys-color-background);
+    gap: 16px;
+}
+
+.menuButton {
+    background: transparent;
+    border: none;
+    color: var(--md-sys-color-on-background);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    margin-left: -8px;
+    /* Offset padding to align visually */
+    border-radius: 8px;
+    transition: background-color var(--transition-short);
+}
+
+.menuButton:hover {
+    background-color: var(--md-sys-color-surface-container);
+}
+
+.mobileTitle {
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--md-sys-color-on-background);
+}
+
 .mainContent {
     flex: 1;
     display: flex;
@@ -18,4 +59,40 @@
     box-shadow: -4px 0 24px rgba(0, 0, 0, 0.2);
     /* The sidebar sits left, the main content acts like a surface above the background */
     z-index: 1;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 5;
+    /* Below sidebar (10), above main content (1) */
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    transition: opacity var(--transition-standard);
+    pointer-events: none;
+}
+
+.overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+    .mobileTopBar {
+        display: flex;
+    }
+
+    .mainContent {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    .overlay {
+        display: block;
+    }
 }

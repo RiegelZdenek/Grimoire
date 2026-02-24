@@ -6,6 +6,8 @@ import styles from './Sidebar.module.css';
 interface SidebarProps {
     activeTab: Tab;
     onTabChange: (tab: Tab) => void;
+    isOpen: boolean;
+    onClose: () => void;
 }
 
 interface NavItem {
@@ -25,9 +27,9 @@ const navItems: NavItem[] = [
     { id: 'maps', label: 'Maps', icon: Map },
 ];
 
-export function Sidebar({ activeTab, onTabChange }: SidebarProps) {
+export function Sidebar({ activeTab, onTabChange, isOpen, onClose }: SidebarProps) {
     return (
-        <nav className={styles.sidebar}>
+        <nav className={clsx(styles.sidebar, { [styles.open]: isOpen })}>
             <div className={styles.logoContainer}>
                 <div className={styles.logoIcon}>D&D</div>
             </div>
@@ -41,7 +43,10 @@ export function Sidebar({ activeTab, onTabChange }: SidebarProps) {
                         <li key={item.id} className={styles.navItem}>
                             <button
                                 className={clsx(styles.navButton, { [styles.active]: isActive })}
-                                onClick={() => onTabChange(item.id)}
+                                onClick={() => {
+                                    onTabChange(item.id);
+                                    onClose(); // Auto-close on mobile selection
+                                }}
                                 aria-label={item.label}
                                 title={item.label}
                             >

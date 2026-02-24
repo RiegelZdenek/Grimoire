@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef, useCallback } from 'react';
 import { Search } from 'lucide-react';
 import styles from './Weapons.module.css';
 import { WeaponCard } from './components/WeaponCard/WeaponCard';
@@ -26,6 +26,18 @@ const uniqueSortedWeapons = Array.from(new Map(allWeapons.map(w => [w.Name, w]))
 
 export const Weapons: React.FC = () => {
     const [searchQuery, setSearchQuery] = useState('');
+    const [isScrolled, setIsScrolled] = useState(false);
+    const lastScrollTop = useRef(0);
+
+    const handleScroll = useCallback((e: React.UIEvent<HTMLDivElement>) => {
+        const scrollTop = e.currentTarget.scrollTop;
+        if (scrollTop > lastScrollTop.current && scrollTop > 0) {
+            setIsScrolled(true);
+        } else if (scrollTop < lastScrollTop.current && scrollTop <= 50) {
+            setIsScrolled(false);
+        }
+        lastScrollTop.current = scrollTop;
+    }, []);
 
     const filteredWeapons = useMemo(() => {
         const query = searchQuery.toLowerCase();
@@ -40,7 +52,7 @@ export const Weapons: React.FC = () => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.header}>
+            <div className={`${styles.header} ${isScrolled ? styles.isSticky : ''}`}>
                 <div className={styles.searchRow}>
                     <div className={styles.searchIconWrapper}>
                         <Search className={styles.searchIcon} size={20} />
@@ -56,11 +68,10 @@ export const Weapons: React.FC = () => {
             </div>
 
             <div className={styles.content}>
-                <div className={styles.listContainer}>
-                    <div className={styles.listHeader}>
-                        <span className={styles.count}>{filteredWeapons.length} Weapons Found</span>
-                    </div>
-
+                <div
+                    className={styles.listContainer}
+                    onScroll={handleScroll}
+                >
                     <div className={styles.scrollArea}>
                         {filteredWeapons.length > 0 ? (
                             <div className={styles.grid}>

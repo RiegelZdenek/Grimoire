@@ -12,25 +12,29 @@
     padding: 16px;
     border-radius: 12px;
     border: 1px solid var(--border-light);
-    /* Lighter border per request */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: flex-start;
 }
 
 .searchRow {
     display: flex;
     align-items: center;
     gap: 16px;
-    width: 100%;
+    flex: 0 0 auto;
 }
 
 .searchInput {
-    flex: 0 0 450px;
-    /* 50% longer than 300px */
+    flex: 0 0 350px;
+    width: 350px;
     padding: 12px 16px;
     border-radius: 12px;
     border: 1px solid var(--md-sys-color-outline-variant);
     background-color: var(--md-sys-color-surface-container-low);
-    /* Lighter background matching side pane */
     color: var(--text-primary);
     font-size: 1rem;
     font-family: inherit;
@@ -50,6 +54,11 @@
     flex-wrap: wrap;
     gap: 8px;
     align-items: center;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    max-height: 500px;
+    opacity: 1;
+    overflow: hidden;
+    flex: 1;
 }
 
 .content {
@@ -65,18 +74,38 @@
     background-color: var(--surface);
     border-radius: 12px;
     border: 1px solid var(--border);
-    overflow: hidden;
-    /* Let the SpellList handle scrolling */
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
-    transition: all 0.3s ease;
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--text-secondary) rgba(255, 255, 255, 0.05);
+}
+
+.listContainer::-webkit-scrollbar {
+    width: 10px;
+}
+
+.listContainer::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+}
+
+.listContainer::-webkit-scrollbar-thumb {
+    background-color: var(--text-secondary);
+    border-radius: 5px;
+    border: 2px solid var(--surface);
+}
+
+.listContainer::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-light);
 }
 
 /* Optional: adjust list width if a spell is selected (for extremely wide screens) */
-.listWithSelection {
-    /* flex: 0 0 400px; */
-    /* Or keep flex: 1 and let detail pane take flex: 2 */
-}
+/* .listWithSelection {
+    flex: 0 0 400px;
+    Or keep flex: 1 and let detail pane take flex: 2
+} */
 
 .detailContainer {
     flex: 1;
@@ -106,6 +135,22 @@
     }
 }
 
+.detailContainer.isClosing {
+    animation: slideOut 0.3s ease-in forwards;
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+}
+
 /* Placeholders */
 .listPlaceholder,
 .panePlaceholder {
@@ -131,4 +176,92 @@
     background-color: var(--primary);
     color: white;
     border-color: var(--primary);
+}
+
+/* === Mobile Overrides (< 768px) === */
+@media (max-width: 768px) {
+    .container {
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .header.isSticky {
+        padding: 8px 16px;
+        gap: 0px;
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .header.isSticky .badgesContainer {
+        max-height: 0;
+        opacity: 0;
+        margin: 0;
+        padding: 0;
+    }
+
+    .searchRow {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .searchInput {
+        flex: 1 1 auto;
+        width: 100%;
+    }
+
+    .content {
+        flex-direction: column;
+    }
+
+    .listContainer {
+        flex: 1;
+        /* List takes half available space when detail pane is open */
+        min-height: 250px;
+    }
+
+    .detailContainer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 100;
+        border-radius: 0;
+        border: none;
+        flex: none;
+        animation: slideUp 0.3s ease-out forwards;
+    }
+
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .detailContainer.isClosing {
+        animation: slideDown 0.3s ease-in forwards;
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        to {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+    }
 }

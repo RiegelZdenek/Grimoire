@@ -197,15 +197,22 @@
 .skillRow {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     cursor: pointer;
+    user-select: none;
+    padding: 2px 4px;
+    border-radius: 4px;
+    transition: background-color var(--transition-short);
 }
 
-.skillCheckbox {
-    cursor: pointer;
-    width: 14px;
-    height: 14px;
-    accent-color: var(--md-sys-color-primary);
+.skillRow:hover {
+    background-color: var(--md-sys-color-surface-container-highest);
+}
+
+.skillProficient .skillName,
+.skillProficient .skillMod {
+    color: var(--md-sys-color-tertiary);
+    font-weight: 700;
 }
 
 .skillMod {
@@ -513,4 +520,74 @@
     font-size: 0.9rem;
     text-align: center;
     padding: 16px 0;
+}
+
+/* === Mobile Overrides (< 768px) === */
+@media (max-width: 768px) {
+    .sheetContainer {
+        padding: 16px;
+        gap: 24px;
+    }
+
+    /* Header */
+    .header {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .infoGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    /* Top Stats (Ability Scores) */
+    .topStatsRow {
+        flex-direction: column;
+    }
+
+    .abilityScoresRow {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 16px;
+    }
+
+    .abilityColumn {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 16px;
+        background-color: var(--md-sys-color-surface-container-low);
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+    .scoreBox {
+        margin-bottom: 0px;
+        flex-shrink: 0;
+    }
+
+    .skillsList {
+        flex: 1;
+        justify-content: center;
+    }
+
+    /* Combat Stats */
+    .secondaryStatsRow {
+        flex-direction: column;
+    }
+
+    .combatStats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Main Grid */
+    .gridRow {
+        flex-direction: column;
+    }
+
+    .itemDetailsRow {
+        flex-wrap: wrap;
+    }
 }

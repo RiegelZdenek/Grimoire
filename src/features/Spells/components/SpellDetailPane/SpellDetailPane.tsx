@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from './SpellDetailPane.module.css';
 import type { Spell } from '../../../../types/Spell';
-import { ArrowUpCircle, BookOpen, Clock, Fingerprint, Maximize, Ruler } from 'lucide-react';
+import { ArrowUpCircle, BookOpen, Clock, Fingerprint, Maximize, Ruler, X } from 'lucide-react';
 
 interface SpellDetailPaneProps {
     spell: Spell;
+    onClose?: () => void;
 }
 
 const getLevelString = (level: number, school: string) => {
@@ -22,7 +23,7 @@ const getActionTypeString = (type: string) => {
 
 import { formatTextWithDiceAndBold } from '../../utils/diceParser';
 
-export const SpellDetailPane: React.FC<SpellDetailPaneProps> = ({ spell }) => {
+export const SpellDetailPane: React.FC<SpellDetailPaneProps> = ({ spell, onClose }) => {
     // Format description into paragraphs
     const paragraphs = spell.description.split('\n\n').filter(p => p.trim() !== '');
 
@@ -33,7 +34,14 @@ export const SpellDetailPane: React.FC<SpellDetailPaneProps> = ({ spell }) => {
     return (
         <div className={styles.pane}>
             <div className={styles.header}>
-                <h2 className={styles.name}>{spell.name}</h2>
+                <div className={styles.titleRow}>
+                    <h2 className={styles.name}>{spell.name}</h2>
+                    {onClose && (
+                        <button className={styles.closeButton} onClick={onClose} aria-label="Close details">
+                            <X size={24} />
+                        </button>
+                    )}
+                </div>
                 <span className={styles.level}>{getLevelString(spell.level, spell.school)}</span>
 
                 <div className={styles.classes}>

@@ -8,9 +8,10 @@ interface SpellListProps {
     spells: Spell[];
     onSelectSpell: (name: string) => void;
     selectedSpellName: string | null;
+    onScroll?: (e: React.UIEvent<HTMLDivElement>) => void;
 }
 
-export const SpellList: React.FC<SpellListProps> = ({ spells, onSelectSpell, selectedSpellName }) => {
+export const SpellList: React.FC<SpellListProps> = ({ spells, onSelectSpell, selectedSpellName, onScroll }) => {
     if (spells.length === 0) {
         return (
             <div className={styles.emptyState}>
@@ -23,10 +24,7 @@ export const SpellList: React.FC<SpellListProps> = ({ spells, onSelectSpell, sel
 
     return (
         <div className={styles.listContainer}>
-            <div className={styles.listHeader}>
-                <span className={styles.count}>{spells.length} spells</span>
-            </div>
-            <div className={styles.scrollArea}>
+            <div className={styles.scrollArea} onScroll={onScroll}>
                 <div className={styles.grid}>
                     {spells.map(spell => (
                         <SpellCard
