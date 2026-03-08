@@ -100,11 +100,53 @@
     padding: 24px;
 }
 
+/* Optional visual cue or width limitation if desired for .listWithSelection */
+
+.detailContainer {
+    flex: 1;
+    background-color: var(--md-sys-color-surface-container-low, var(--surface));
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 0.3s ease-out forwards;
+    z-index: 2;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.detailContainer.isClosing {
+    animation: slideOut 0.3s ease-in forwards;
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+}
+
 .grid {
-    display: grid;
-    /* Responsive grid: min width 300px, stretch to fill */
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .emptyState {
@@ -145,5 +187,55 @@
     .header.isSticky {
         padding: 8px 16px;
         box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .content {
+        flex-direction: column;
+    }
+
+    .listContainer {
+        flex: 1;
+        min-height: 250px;
+    }
+
+    .detailContainer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 100;
+        border-radius: 0;
+        border: none;
+        flex: none;
+        animation: slideUp 0.3s ease-out forwards;
+    }
+
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .detailContainer.isClosing {
+        animation: slideDown 0.3s ease-in forwards;
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        to {
+            opacity: 0;
+            transform: translateY(20px);
+        }
     }
 }

@@ -1,27 +1,84 @@
 .card {
-    padding: 16px;
+    padding: 12px 16px;
     background-color: var(--md-sys-color-surface-container-high);
     border: 1px solid var(--md-sys-color-outline-variant);
     border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
     display: flex;
     flex-direction: column;
     gap: 12px;
-    transition: all 0.2s ease;
-    box-shadow: var(--elevation-1);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+}
+
+.rarityCommon {
+    border-color: var(--md-sys-color-outline-variant);
+}
+
+.rarityUncommon {
+    border-color: #4caf50;
+}
+
+.rarityRare {
+    border-color: #2196f3;
+}
+
+.rarityVeryRare {
+    border-color: #9c27b0;
+}
+
+.rarityLegendary {
+    border-color: #ffc107;
+}
+
+.rarityArtifact {
+    border-color: #ef4444;
 }
 
 .card:hover {
     background-color: var(--md-sys-color-surface-container-highest);
     border-color: var(--primary-light);
     transform: translateY(-2px);
-    box-shadow: var(--elevation-2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card.selected {
+    background-color: var(--md-sys-color-surface-container-highest);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 1px var(--primary);
+}
+
+.card.selected::before {
+    background-color: var(--primary);
 }
 
 .header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 12px;
+}
+
+.titleArea {
+    display: flex;
+    flex-direction: column;
+}
+
+.costArea {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .name {
@@ -30,78 +87,71 @@
     font-weight: 600;
     color: var(--primary-light);
     font-family: 'Outfit', sans-serif;
-    line-height: 1.2;
 }
 
-.stats {
+.level {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: capitalize;
+    font-style: italic;
+}
+
+.price {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #ffb300;
+}
+
+.meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.components {
     display: flex;
     gap: 8px;
-    flex-shrink: 0;
+    flex-wrap: wrap;
 }
 
-.statBadge {
+.componentIcon {
+    display: flex;
+    align-items: center;
+    gap: 4px;
     font-size: 0.75rem;
     font-weight: 600;
-    padding: 2px 8px;
-    border-radius: 12px;
-    background-color: var(--surface-overlay);
     color: var(--text-secondary);
+    background-color: var(--surface);
+    padding: 2px 6px;
+    border-radius: 4px;
     border: 1px solid var(--border);
 }
 
-.damageArea {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.damageLabel {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--text-muted);
-    font-weight: 600;
-}
-
-.damageText {
-    font-size: 0.875rem;
-    color: var(--text-primary);
-}
-
-.extractedRolls {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-    margin-top: 4px;
-}
-
 .extractedRoll {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     font-size: 0.75rem;
     font-weight: 700;
-    padding: 2px 8px;
+    padding: 2px 6px;
     border-radius: 4px;
     background-color: var(--surface);
     border: 1px solid currentColor;
     white-space: nowrap;
 }
 
-.properties {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 4px;
-    padding-top: 12px;
-    border-top: 1px solid var(--border);
-}
+.description {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    line-height: 1.5;
 
-.propertyBadge {
-    font-size: 0.75rem;
-    color: var(--text-secondary);
-    background-color: rgba(255, 255, 255, 0.05);
-    padding: 2px 8px;
-    border-radius: 4px;
-    border: 1px solid transparent;
-    /* Keeps layout stable on hover/active if bordered */
+    /* Truncate to 2 lines */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
